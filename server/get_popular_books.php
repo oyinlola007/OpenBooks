@@ -1,6 +1,6 @@
 <?php
 
-include('connection.php');
+include_once 'connection.php';
 
 $sql = "SELECT b.title, b.description, b.photo, b.available_copies, b.category_id " .
        "FROM `book` AS b " .
@@ -11,6 +11,6 @@ $sql = "SELECT b.title, b.description, b.photo, b.available_copies, b.category_i
 
 $stmt = $conn->prepare($sql);
 
-$popular_books = $stmt->execute();
+$stmt->execute();
 
 ?>
