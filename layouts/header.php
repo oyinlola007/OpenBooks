@@ -34,7 +34,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="../account.php"><i class="fas fa-user"></i></a>
+                        <a href="account.php"><i class="fas fa-user"></i></a>
                     </li>
 
 
