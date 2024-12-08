@@ -10,7 +10,7 @@ include_once 'layouts/header.php';
     <p>Here, you can find all books</p>
   </div>
   <div class="row mx-auto container">
-    <div onclick="window.location.href='single_book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
+    <div onclick="window.location.href='book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
       <img class="img-fluid mb-3" src="assets/images/books/book1.jpg" alt="Book 1" />
       <div class="star">
         <i class="fas fa-star"></i>
@@ -22,7 +22,7 @@ include_once 'layouts/header.php';
       <button class="borrow-btn">Borrow Now</button>
     </div>
 
-    <div onclick="window.location.href='single_book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
+    <div onclick="window.location.href='book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
       <img class="img-fluid mb-3" src="assets/images/books/book2.jpg" alt="Book 1" />
       <div class="star">
         <i class="fas fa-star"></i>
@@ -34,7 +34,7 @@ include_once 'layouts/header.php';
       <button class="borrow-btn">Borrow Now</button>
     </div>
 
-    <div onclick="window.location.href='single_book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
+    <div onclick="window.location.href='book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
       <img class="img-fluid mb-3" src="assets/images/books/book3.jpg" alt="Book 1" />
       <div class="star">
         <i class="fas fa-star"></i>
@@ -46,7 +46,7 @@ include_once 'layouts/header.php';
       <button class="borrow-btn">Borrow Now</button>
     </div>
 
-    <div onclick="window.location.href='single_book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
+    <div onclick="window.location.href='book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
       <img class="img-fluid mb-3" src="assets/images/books/book1.jpg" alt="Book 1" />
       <div class="star">
         <i class="fas fa-star"></i>
@@ -58,7 +58,7 @@ include_once 'layouts/header.php';
       <button class="borrow-btn">Borrow Now</button>
     </div>
 
-    <div onclick="window.location.href='single_book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
+    <div onclick="window.location.href='book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
       <img class="img-fluid mb-3" src="assets/images/books/book2.jpg" alt="Book 1" />
       <div class="star">
         <i class="fas fa-star"></i>
@@ -70,7 +70,7 @@ include_once 'layouts/header.php';
       <button class="borrow-btn">Borrow Now</button>
     </div>
 
-    <div onclick="window.location.href='single_book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
+    <div onclick="window.location.href='book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
       <img class="img-fluid mb-3" src="assets/images/books/book3.jpg" alt="Book 1" />
       <div class="star">
         <i class="fas fa-star"></i>
@@ -82,7 +82,7 @@ include_once 'layouts/header.php';
       <button class="borrow-btn">Borrow Now</button>
     </div>
 
-    <div onclick="window.location.href='single_book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
+    <div onclick="window.location.href='book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
       <img class="img-fluid mb-3" src="assets/images/books/book1.jpg" alt="Book 1" />
       <div class="star">
         <i class="fas fa-star"></i>
@@ -94,7 +94,7 @@ include_once 'layouts/header.php';
       <button class="borrow-btn">Borrow Now</button>
     </div>
 
-    <div onclick="window.location.href='single_book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
+    <div onclick="window.location.href='book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
       <img class="img-fluid mb-3" src="assets/images/books/book2.jpg" alt="Book 1" />
       <div class="star">
         <i class="fas fa-star"></i>
@@ -106,7 +106,7 @@ include_once 'layouts/header.php';
       <button class="borrow-btn">Borrow Now</button>
     </div>
 
-    <div onclick="window.location.href='single_book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
+    <div onclick="window.location.href='book.php';" class="book text-center col-lg-4 col-md-12 col-sm-12">
       <img class="img-fluid mb-3" src="assets/images/books/book3.jpg" alt="Book 1" />
       <div class="star">
         <i class="fas fa-star"></i>

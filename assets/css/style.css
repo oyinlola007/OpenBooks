@@ -5,6 +5,10 @@
     color: white;
 }
 
+.text-black{
+    color: black;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -64,6 +68,7 @@ button:hover {
     background-color: red;
     color: white;
 }
+
 
 .navbar {
     background-color: #282323 !important;
@@ -192,6 +197,10 @@ footer .logo {
     margin-bottom: 2rem;
 }
 
+.book a{
+    text-decoration: none;
+}
+
 .book img {
     width: 70%;
     height: 80%;
@@ -293,11 +302,19 @@ footer .social-tags a:hover {
 }
 
 .my-books th:nth-child(2) {
+    text-align: left;
+}
+
+.my-books th:nth-child(3) {
     text-align: right;
 }
 
 .my-books td {
     padding: 10px 20px;
+    text-align: left;
+}
+
+.my-books td:nth-child(3) {
     text-align: right;
 }
 
@@ -311,10 +328,16 @@ footer .social-tags a:hover {
     color: red;
     text-decoration: none;
     font-size: 16px;
+    display: flex;
+}
+
+.my-books a:hover {
+    color: orange;
 }
 
 .my-books .book-info p {
     margin: 3px;
+    display: flex;
 }
 
 #login-form {
@@ -339,6 +362,10 @@ footer .social-tags a:hover {
     color: orangered;
 }
 
+#login-form #register-url:hover {
+    color: orange;
+}
+
 #register-form {
     width: 50%;
     margin: 5px auto;
@@ -361,6 +388,10 @@ footer .social-tags a:hover {
     color: orangered;
 }
 
+#register-form #login-url:hover {
+    color: orange;
+}
+
 #account-form {
     width: 50%;
     margin: 35px auto;
@@ -381,4 +412,26 @@ footer .social-tags a:hover {
 #logout-btn {
     color: orangered;
     text-decoration: none;
+}
+
+.account-info #my-books-btn:hover,
+#logout-btn:hover {
+    color: orange;
+}
+
+.book-info .modal-body p{
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.star-rating i {
+    color: gray;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.star-rating i.active {
+    color: goldenrod;
 }

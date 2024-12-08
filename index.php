@@ -36,36 +36,32 @@ include_once 'layouts/header.php';
 
 <section id="popular" class="my-5 pb-5">
   <div class="container text-center mt-5 py-5 text-white">
-    <h3>Featured books</h3>
+    <h3>Popular books</h3>
     <hr class="mx-auto">
-    <p>Here, you can check out the highest rated books</p>
+    <p>Here, you can check out the most borrowed books</p>
   </div>
   <div class="row mx-auto container-fluid">
 
     <?php include('server/get_popular_books.php'); ?>
 
-    <?php while ($row = $stmt->fetch()) { ?>
-
+    <?php while ($book = $ps->fetch()) { ?>
       <div class="book text-center col-lg-4 col-md-12 col-sm-12">
-        <img class="img-fluid mb-3" <?php echo "src=\"assets/images/books/" . $row['photo'] . "\"" ?> alt="Book 1" />
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <button class="borrow-btn">Borrow Now</button>
+        <a href="book.php?book_id=<?= $book['id'] ?>">
+          <img class="img-fluid mb-3" src="assets/images/books/<?= $book['photo'] ?>" alt=<?= $book['title'] ?> />
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <button class="borrow-btn">Borrow Now</button>
+        </a>
       </div>
 
     <?php } ?>
 
 </section>
 
-<section id="banner">
-  <div class="container">
-
-  </div>
-</section>
 
 <?php include_once 'layouts/footer.php'; ?>
