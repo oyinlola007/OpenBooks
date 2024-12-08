@@ -92,41 +92,24 @@ include_once 'layouts/header.php';
     <hr class="mx-auto">
   </div>
   <div class="row mx-auto container-fluid">
-    <div class="book text-center col-lg-4 col-md-12 col-sm-12">
-      <img class="img-fluid mb-3" src="assets/images/books/book1.jpg" alt="Book 1" />
-      <div class="star">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-      </div>
-      <button class="borrow-btn">Borrow Now</button>
-    </div>
+    <?php include('server/get_popular_books.php'); ?>
 
-    <div class="book text-center col-lg-4 col-md-12 col-sm-12">
-      <img class="img-fluid mb-3" src="assets/images/books/book2.jpg" alt="Book 1" />
-      <div class="star">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
+    <?php while ($book = $ps->fetch()) { ?>
+      <div class="book text-center col-lg-4 col-md-12 col-sm-12">
+        <a href="book.php?book_id=<?= $book['id'] ?>">
+          <img class="img-fluid mb-3" src="assets/images/books/<?= $book['photo'] ?>" alt=<?= $book['title'] ?> />
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <button class="borrow-btn">Borrow Now</button>
+        </a>
       </div>
-      <button class="borrow-btn">Borrow Now</button>
-    </div>
 
-    <div class="book text-center col-lg-4 col-md-12 col-sm-12">
-      <img class="img-fluid mb-3" src="assets/images/books/book3.jpg" alt="Book 1" />
-      <div class="star">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-      </div>
-      <button class="borrow-btn">Borrow Now</button>
-    </div>
+    <?php } ?>
   </div>
 </section>
 

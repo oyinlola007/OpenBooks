@@ -29,7 +29,11 @@ include_once 'layouts/header.php';
         </div>
       </div>
 
-      <div><button>Discover &nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-right"></i></button></div>
+      <div>
+        <a href="discover.php">
+          <button>Discover &nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-right"></i></button>
+        </a>
+      </div>
 
   </div>
 </section>
@@ -40,8 +44,8 @@ include_once 'layouts/header.php';
     <hr class="mx-auto">
     <p>Here, you can check out the most borrowed books</p>
   </div>
-  <div class="row mx-auto container-fluid">
 
+  <div class="row mx-auto container-fluid">
     <?php include('server/get_popular_books.php'); ?>
 
     <?php while ($book = $ps->fetch()) { ?>
@@ -60,6 +64,7 @@ include_once 'layouts/header.php';
       </div>
 
     <?php } ?>
+  </div>
 
 </section>
 
