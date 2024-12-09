@@ -11,9 +11,22 @@ if (!isset($_SESSION['logged_in'])) {
   exit();
 }
 
-$stmt = "SELECT b.id, b.title, b.description, b.photo, b.available_copies, b.category_id " .
-  "FROM `book` AS b " .
-  "LIMIT 9;";
+$stmt = "SELECT 
+      b.id, 
+      b.title, 
+      b.description, 
+      b.photo, 
+      b.available_copies, 
+      b.category_id,
+      COALESCE(CAST(AVG(r.rating) AS INT), 0) AS average_rating
+    FROM 
+      `book` AS b
+    LEFT JOIN 
+      `review` AS r ON b.id = r.book_id
+    GROUP BY 
+      b.id
+    LIMIT 9;";
+
 
 $ps = $conn->prepare($stmt);
 
@@ -32,7 +45,7 @@ $ps->execute();
 
       <div onclick="window.location.href='book.php?book_id=<?= $book['id'] ?>';" class="book text-center col-lg-4 col-md-12 col-sm-12">
         <img class="img-fluid mb-3" src="assets/images/books/<?= $book['photo'] ?>" alt=<?= $book['title'] ?> />
-        <div class="star">
+        <div class="star" data-rating=<?= $book['average_rating'] ?>>
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>

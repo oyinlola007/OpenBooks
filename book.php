@@ -14,16 +14,23 @@ if (isset($_GET['book_id'])) {
           book.description, 
           book.photo AS book_photo, 
           category.id AS category_id, 
-          category.name AS category_name 
+          category.name AS category_name,
+          COALESCE(CAST(AVG(review.rating) AS INT), 0) AS average_rating
       FROM 
           book 
       INNER JOIN 
           category 
       ON 
           book.category_id = category.id 
+      LEFT JOIN 
+          review 
+      ON 
+          book.id = review.book_id
       WHERE 
-          book.id = ? 
-";
+          book.id = ?
+      GROUP BY
+          book.id, category.id";
+
   $ps = $conn->prepare($stmt);
   $params = array($book_id);
   $ps->execute($params);
@@ -48,7 +55,7 @@ if (isset($_GET['book_id'])) {
         <div class="col-lg-4 col-md-6 col-sm-12 text-white">
           <h6><?= $book['category_name'] ?></h6>
           <h3 class="py-4"><?= $book['title'] ?></h3>
-          <button class="buy-btn" type="button" data-bs-toggle="modal" data-bs-target="#confirmationModal">Borrow</button>
+          <button class="borrow-btn" type="button" data-bs-toggle="modal" data-bs-target="#confirmationModal">Borrow</button>
 
           <!-- Modal -->
           <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
@@ -68,10 +75,18 @@ if (isset($_GET['book_id'])) {
               </div>
             </div>
           </div>
-          <h4 class="my-5 mb-5">Description</h4>
-          <span>
+          <h4 class="my-5 mb-3">Description</h4>
+          <span">
             <?= $book['description'] ?>
-          </span>
+            </span>
+
+            <div class="star my-5" data-rating=<?= $book['average_rating'] ?>>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
         </div>
 
       </div>
@@ -95,7 +110,7 @@ if (isset($_GET['book_id'])) {
       <div class="book text-center col-lg-4 col-md-12 col-sm-12">
         <a href="book.php?book_id=<?= $book['id'] ?>">
           <img class="img-fluid mb-3" src="assets/images/books/<?= $book['photo'] ?>" alt=<?= $book['title'] ?> />
-          <div class="star">
+          <div class="star" data-rating=<?= $book['average_rating'] ?>>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>

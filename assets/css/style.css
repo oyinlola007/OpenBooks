@@ -267,8 +267,21 @@ hr {
 
 .star i {
     font-size: 0.9rem;
-    color: goldenrod;
+    color: grey;
 }
+
+
+.star[data-rating="1"] i:nth-child(1),
+.star[data-rating="2"] i:nth-child(-n+2),
+.star[data-rating="3"] i:nth-child(-n+3),
+.star[data-rating="4"] i:nth-child(-n+4),
+.star[data-rating="5"] i:nth-child(-n+5) {
+  color: goldenrod; 
+}
+
+
+
+
 
 footer {
     background-color: #282323;

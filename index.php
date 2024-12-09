@@ -102,7 +102,7 @@ include_once 'layouts/header.php';
       <div class="book text-center col-lg-4 col-md-12 col-sm-12">
         <a href="book.php?book_id=<?= $book['id'] ?>">
           <img class="img-fluid mb-3" src="assets/images/books/<?= $book['photo'] ?>" alt=<?= $book['title'] ?> />
-          <div class="star">
+          <div class="star" data-rating=<?= $book['average_rating'] ?>>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>

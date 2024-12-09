@@ -8,7 +8,6 @@ $stmt = "SELECT b.id, b.title, b.description, b.photo, b.available_copies, b.cat
        "ORDER BY RAND() " .  // Randomly order 
        "LIMIT 3;";
 
-
 $ps = $conn->prepare($stmt);
 
 $ps->execute();
