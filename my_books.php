@@ -47,78 +47,83 @@ $ps->execute([$user_email]);
     </div>
 
     <table class="mt-5 pt-5 text-white">
-      <tr>
-        <th>Book</th>
-        <th>Status</th>
-        <th>Borrowed duration</th>
-      </tr>
-      <?php while ($book = $ps->fetch()) { ?>
+      <thead>
         <tr>
-          <td>
-            <div class="book-info text-center">
-              <img src="assets/images/books/<?= $book['book_photo'] ?>" alt=<?= $book['title'] ?> />
-              <div>
-                <p><?= $book['title'] ?></p>
-                <br>
-                <?php if ($book['status'] === 'borrowed') { ?>
-                  <a class="return-btn" href="#" data-bs-toggle="modal" data-bs-target="#confirmationModal<?= $book['book_id'] ?>">Return book</a>
+          <th>Book</th>
+          <th>Status</th>
+          <th>Borrowed duration</th>
+        </tr>
+      </thead>
 
-                  <!-- Modal -->
-                  <div class="modal fade" id="confirmationModal<?= $book['book_id'] ?>" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
+      <tbody class="table-group-divider">
+        <?php while ($book = $ps->fetch()) { ?>
+          <tr>
+            <td>
+              <div class="book-info text-center">
+                <img src="assets/images/books/<?= $book['book_photo'] ?>" alt=<?= $book['title'] ?> />
+                <div>
+                  <p><?= $book['title'] ?></p>
+                  <br>
+                  <?php if ($book['status'] === 'borrowed') { ?>
+                    <a class="return-btn" href="#" data-bs-toggle="modal" data-bs-target="#confirmationModal<?= $book['book_id'] ?>">Return book</a>
 
-                        <div class="modal-body text-black">
-                          <p>Did you enjoy '<?= $book['title'] ?>'? Leave a review</p>
-
-                          <!-- Rating stars -->
-                          <div class="star-rating" data-book-id="<?= $book['book_id'] ?>">
-                            <i class="fas fa-star" data-rating="1"></i>
-                            <i class="fas fa-star" data-rating="2"></i>
-                            <i class="fas fa-star" data-rating="3"></i>
-                            <i class="fas fa-star" data-rating="4"></i>
-                            <i class="fas fa-star" data-rating="5"></i>
+                    <!-- Modal -->
+                    <div class="modal fade" id="confirmationModal<?= $book['book_id'] ?>" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
 
-                          <!-- Comment textarea -->
-                          <div class="form-floating mt-3">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="comment"></textarea>
-                            <label for="floatingTextarea">Comments</label>
+                          <div class="modal-body text-black">
+                            <p>Did you enjoy '<?= $book['title'] ?>'? Leave a review</p>
+
+                            <!-- Rating stars -->
+                            <div class="star-rating" data-book-id="<?= $book['book_id'] ?>">
+                              <i class="fas fa-star" data-rating="1"></i>
+                              <i class="fas fa-star" data-rating="2"></i>
+                              <i class="fas fa-star" data-rating="3"></i>
+                              <i class="fas fa-star" data-rating="4"></i>
+                              <i class="fas fa-star" data-rating="5"></i>
+                            </div>
+
+                            <!-- Comment textarea -->
+                            <div class="form-floating mt-3">
+                              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="comment"></textarea>
+                              <label for="floatingTextarea">Comments</label>
+                            </div>
+
                           </div>
 
-                        </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-
-                          <!-- Hidden form to send rating and comment to the server -->
-                          <form id="return-book-form" method="POST" action="server/return_book.php">
-                            <input type="hidden" name="rating" id="rating" value="0"> <!-- Set default rating value to 0 -->
-                            <input type="hidden" name="comment" id="comment">
-                            <input type="hidden" name="book_id" id="book_id">
-                            <button type="submit" class="btn btn-primary" name="return_book" id="submit-rating-btn" value="return_book" >return book</button>
-                          </form>
+                            <!-- Hidden form to send rating and comment to the server -->
+                            <form id="return-book-form" method="POST" action="server/return_book.php">
+                              <input type="hidden" name="rating" id="rating" value="0"> <!-- Set default rating value to 0 -->
+                              <input type="hidden" name="comment" id="comment">
+                              <input type="hidden" name="book_id" id="book_id">
+                              <button type="submit" class="btn btn-primary" name="return_book" id="submit-rating-btn" value="return_book">return book</button>
+                            </form>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                <?php } ?>
+                  <?php } ?>
+                </div>
               </div>
-            </div>
-          </td>
-          <td>
-            <span><?= strtoupper($book['status']) ?></span>
-          </td>
-          <td>
-            <?php if ($book['status'] === 'borrowed') { ?>
-              <span><?= $book['days_after_borrow'] ?> days</span>
-            <?php } ?>
-          </td>
-        </tr>
-      <?php } ?>
+            </td>
+            <td>
+              <span><?= strtoupper($book['status']) ?></span>
+            </td>
+            <td>
+              <?php if ($book['status'] === 'borrowed') { ?>
+                <span><?= $book['days_after_borrow'] ?> days</span>
+              <?php } ?>
+            </td>
+          </tr>
+        <?php } ?>
+      </tbody>
 
     </table>
 
