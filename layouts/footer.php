@@ -8,11 +8,11 @@
         <div class="footer-one col-lg-3 col-md-6 col-sm-12 categories">
             <h5 class="pb-2">Categories</h5>
             <ul class="text-uppercase">
-                <li><a href="#">Comedy</a></li>
-                <li><a href="#">Horror</a></li>
-                <li><a href="#">Biography</a></li>
-                <li><a href="#">Science</a></li>
-                <li><a href="#">Arts</a></li>
+                <li><a href="discover.php?filter=Fantasy">Fantasy</a></li>
+                <li><a href="discover.php?filter=Science-Fiction">Science-Fiction</a></li>
+                <li><a href="discover.php?filter=Philosophy">Philosophy</a></li>
+                <li><a href="discover.php?filter=DIY">DIY</a></li>
+                <li><a href="discover.php?filter=Romance">Romance</a></li>
             </ul>
         </div>
 
