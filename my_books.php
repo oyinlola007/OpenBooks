@@ -89,26 +89,26 @@ $ps->execute([$user_email]);
 
                             <!-- Comment textarea -->
                             <div class="form-floating mt-3">
-                              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="comment"></textarea>
-                              <label for="floatingTextarea">Comments</label>
+                              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea<?= $book['book_id'] ?>" name="comment"></textarea>
+                              <label for="floatingTextarea<?= $book['book_id'] ?>">Comments</label>
                             </div>
-
                           </div>
 
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 
                             <!-- Hidden form to send rating and comment to the server -->
-                            <form id="return-book-form" method="POST" action="server/return_book.php">
-                              <input type="hidden" name="rating" id="rating" value="0"> <!-- Set default rating value to 0 -->
-                              <input type="hidden" name="comment" id="comment">
-                              <input type="hidden" name="book_id" id="book_id">
-                              <button type="submit" class="btn btn-primary" name="return_book" id="submit-rating-btn" value="return_book">return book</button>
+                            <form id="return-book-form<?= $book['book_id'] ?>" method="POST" action="server/return_book.php">
+                              <input type="hidden" name="rating" id="rating<?= $book['book_id'] ?>" value="0">
+                              <input type="hidden" name="comment" id="comment<?= $book['book_id'] ?>">
+                              <input type="hidden" name="book_id" id="book_id<?= $book['book_id'] ?>">
+                              <button type="submit" class="btn btn-primary" name="return_book" id="submit-rating-btn<?= $book['book_id'] ?>" value="return_book">Return book</button>
                             </form>
                           </div>
                         </div>
                       </div>
                     </div>
+
                   <?php } ?>
                 </div>
               </div>
@@ -132,43 +132,39 @@ $ps->execute([$user_email]);
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const starsContainers = document.querySelectorAll('.star-rating');
-    let ratingValue = 0;
-    let book_id = null;
-    const commentTextarea = document.getElementById('floatingTextarea'); // Get comment textarea element
 
-    // Iterate over each container with stars
     starsContainers.forEach(container => {
       const stars = container.querySelectorAll('i');
-      book_id = container.getAttribute('data-book-id');
+      const bookId = container.getAttribute('data-book-id');
+      let ratingValue = 0;
 
-      // Set up click event listener for each star inside the container
+      // Set up click event listener for each star
       stars.forEach(star => {
         star.addEventListener('click', function() {
-          // Get the clicked star's rating value
           ratingValue = this.getAttribute('data-rating');
 
-          // Highlight the stars up to the clicked star
-          stars.forEach(star => {
-            star.classList.remove('active'); // Remove 'active' class
-          });
-
-          // Add 'active' class to the clicked stars
+          // Reset and highlight stars
+          stars.forEach(star => star.classList.remove('active'));
           for (let i = 0; i < ratingValue; i++) {
             stars[i].classList.add('active');
           }
         });
       });
-    });
 
-    // Handle the form submission when the Submit button is clicked
-    document.addEventListener('click', function(e) {
-      if (e.target && e.target.id === 'submit-rating-btn') {
-        const comment = commentTextarea.value; // Get the comment from the textarea
+      // Handle form submission
+      document.addEventListener('click', function(e) {
+        if (e.target && e.target.id === `submit-rating-btn${bookId}`) {
+          const commentTextarea = document.getElementById(`floatingTextarea${bookId}`);
+          const ratingInput = document.getElementById(`rating${bookId}`);
+          const commentInput = document.getElementById(`comment${bookId}`);
+          const bookIdInput = document.getElementById(`book_id${bookId}`);
 
-        document.getElementById('rating').value = ratingValue;
-        document.getElementById('comment').value = comment;
-        document.getElementById('book_id').value = book_id;
-      }
+          // Set values for the hidden inputs
+          ratingInput.value = ratingValue;
+          commentInput.value = commentTextarea.value;
+          bookIdInput.value = bookId;
+        }
+      });
     });
   });
 </script>

@@ -45,10 +45,12 @@ if (isset($_POST['return_book'])) {
       $_SESSION['message'] = "Book Successfully Returned";
       $_SESSION['message_type'] = "success";
       header('location: ../my_books.php');
+      exit();
     } else {
       $_SESSION['message'] = "Error occurred while returning the book";
       $_SESSION['message_type'] = "danger";
       header('location: ../my_books.php');
+      exit();
     }
   }
 }
