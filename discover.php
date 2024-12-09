@@ -1,8 +1,15 @@
 <?php
 
-session_start();
+$title = "Discover";
+include_once 'layouts/header.php';
 
-include_once 'server/connection.php';
+if (!isset($_SESSION['logged_in'])) {
+  // redirect the user if they are not logged in
+  $_SESSION['message'] = "You have to login to continue";
+  $_SESSION['message_type'] = "danger";
+  header('location: login.php');
+  exit();
+}
 
 $stmt = "SELECT b.id, b.title, b.description, b.photo, b.available_copies, b.category_id " .
   "FROM `book` AS b " .
@@ -11,9 +18,6 @@ $stmt = "SELECT b.id, b.title, b.description, b.photo, b.available_copies, b.cat
 $ps = $conn->prepare($stmt);
 
 $ps->execute();
-
-$title = "Discover";
-include_once 'layouts/header.php';
 ?>
 
 <section id="book-list" class="my-5 py-5">
