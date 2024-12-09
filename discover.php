@@ -25,7 +25,14 @@ if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
 }
 
 // Get total number of books available
-$stmt = "SELECT COUNT(*) AS total_books FROM book";
+$stmt = "
+    SELECT COUNT(*) AS total_books
+      FROM 
+          `book` AS b
+      LEFT JOIN 
+          `category` AS c ON b.category_id = c.id
+    $whereClause ";
+  
 $ps = $conn->prepare($stmt);
 $ps->execute();
 $ps = $ps->fetch();

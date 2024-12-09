@@ -104,7 +104,11 @@ if (isset($_GET['book_id'])) {
     <hr class="mx-auto">
   </div>
   <div class="row mx-auto container-fluid">
-    <?php include('server/get_popular_books.php'); ?>
+    <?php
+    $_GET['similar_filter'] = $book['category_name'];
+    $_GET['filter_book_id'] = $book['book_id'];
+    include('server/get_similar_books.php')
+    ?>
 
     <?php while ($book = $ps->fetch()) { ?>
       <div class="book text-center col-lg-4 col-md-12 col-sm-12">

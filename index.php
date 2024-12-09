@@ -1,6 +1,21 @@
 <?php
 $title = "Home";
 include_once 'layouts/header.php';
+
+
+$stmt = "SELECT COUNT(*) AS total_books FROM `book`";
+  
+$ps = $conn->prepare($stmt);
+$ps->execute();
+$ps = $ps->fetch();
+$total_books = $ps['total_books'];
+
+$stmt = "SELECT COUNT(*) AS total_users FROM `user`";
+  
+$ps = $conn->prepare($stmt);
+$ps->execute();
+$ps = $ps->fetch();
+$total_users = $ps['total_users'];
 ?>
 
 
@@ -13,10 +28,10 @@ include_once 'layouts/header.php';
       <div class="stats">
         <div class="row">
           <div class="col col-lg-2 col-md-4 col-sm-6">
-            <i class="fas fa-book"></i><span>28+k</span>
+            <i class="fas fa-book"></i><span><?= $total_books?></span>
           </div>
           <div class="col col-lg-2 col-md-4 col-sm-6">
-            <i class="fas fa-users"></i><span>21,234</span>
+            <i class="fas fa-users"></i><span><?= $total_users?></span>
           </div>
         </div>
         <div class="row">
