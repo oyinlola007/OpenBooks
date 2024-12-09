@@ -38,6 +38,56 @@ include_once 'layouts/header.php';
   </div>
 </section>
 
+<section id="new-arrivals" class="my-5 pb-5">
+  <div class="container text-center mt-5 py-3 text-white">
+    <h3>New Arrivals</h3>
+    <hr class="mx-auto">
+  </div>
+
+  <div id="carouselExampleLight" class="carousel carousel-light slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleLight" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleLight" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleLight" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+
+      <?php
+      $counter = 0;
+
+      include('server/get_latest_books.php');
+
+      while ($book = $ps->fetch()) {
+        $counter++;
+        // Set the active class for the first item
+        $activeClass = ($counter == 1) ? 'active' : '';
+      ?>
+
+        <a href="book.php?book_id=<?= $book['id'] ?>">
+          <div class="carousel-item <?php echo $activeClass; ?>">
+            <div class="stackParent position-relative">
+              <img src="assets/images/books/<?= $book['photo'] ?>" class="stack-Img img-fluid" alt="<?= $book['title'] ?>">
+              <div class="stack-Txt position-absolute top-50 start-50 translate-middle text-white">
+                <h1 class="card-title pb-3"><?= $book['title'] ?></h1>
+                <h5 class="card-text"><?= $book['description'] ?></h5>
+              </div>
+            </div>
+          </div>
+        </a>
+      <?php } ?>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleLight" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleLight" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+
 <section id="popular" class="my-5 pb-5">
   <div class="container text-center mt-5 py-5 text-white">
     <h3>Popular books</h3>

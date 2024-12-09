@@ -1,11 +1,12 @@
 <?php
 
-session_start();
-
-include_once 'server/connection.php';
+$title = "My books";
+include_once 'layouts/header.php';
 
 if (!isset($_SESSION['logged_in'])) {
   // redirect the user if they are not logged in
+  $_SESSION['message'] = "You have to login to continue";
+  $_SESSION['message_type'] = "danger";
   header('location: login.php');
   exit();
 }
@@ -32,8 +33,6 @@ $stmt = "
 $ps = $conn->prepare($stmt);
 $ps->execute([$user_email]);
 
-$title = "My books";
-include_once 'layouts/header.php';
 ?>
 
 <section class="my-5 py-5">

@@ -1,8 +1,7 @@
 <?php
 
-session_start();
-
-include_once 'server/connection.php';
+$title = "Book";
+include_once 'layouts/header.php';
 
 if (isset($_GET['book_id'])) {
 
@@ -32,8 +31,6 @@ if (isset($_GET['book_id'])) {
   header('location: index.php');
 }
 
-$title = "Book";
-include_once 'layouts/header.php';
 ?>
 
 <section class="my-5 py-5">

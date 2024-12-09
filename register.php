@@ -1,14 +1,12 @@
 <?php
 
-session_start();
+$title = "Register";
+include_once 'layouts/header.php';
 
 if ($_SESSION['logged_in']){
   // redirect the user if they are logged in
   header('location: account.php');
 }
-
-$title = "Register";
-include_once 'layouts/header.php';
 ?>
 
 
@@ -22,26 +20,31 @@ include_once 'layouts/header.php';
     <hr class="mx-auto">
   </div>
   <div class="mx-auto container text-white">
-    <form id="register-form" method="POST" action="server/handle_registration.php">
+    <form id="register-form" method="POST" action="server/handle_registration.php" enctype="multipart/form-data">
 
-      <div class="form-group">
+      <div class="form-group mb-3">
         <label>Name</label>
         <input type="text" class="form-control" id="register-name" name="name" placeholder="Name" required />
       </div>
 
-      <div class="form-group">
+      <div class="form-group mb-3">
         <label>Email</label>
         <input type="email" class="form-control" id="register-email" name="email" placeholder="Email" required />
       </div>
 
-      <div class="form-group">
+      <div class="form-group mb-3">
         <label>Password</label>
         <input type="password" class="form-control" id="register-password" name="password" placeholder="Password" required />
       </div>
 
-      <div class="form-group">
+      <div class="form-group mb-3">
         <label>Confirm Password</label>
         <input type="password" class="form-control" id="register-confirm-password" name="confirmPassword" placeholder="Confirm Password" required />
+      </div>
+
+      <div class="form-group mb-3">
+        <label>Select Profile Picture</label>
+        <input class="form-control" type="file" accept="image/png, image/gif, image/jpeg" id="photo" name="photo" required>
       </div>
 
       <div class="form-group">

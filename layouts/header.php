@@ -1,3 +1,32 @@
+<?php
+
+session_start();
+
+include_once 'server/connection.php';
+
+$profilePicture = null;
+
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+    $userEmail = $_SESSION['user_email'];
+
+    // Fetch user profile picture from the database
+    $stmt = $conn->prepare("SELECT photo FROM user WHERE email = ?");
+    $stmt->execute([$userEmail]);
+    $user = $stmt->fetch();
+
+    if ($user && $user['photo']) {
+        $profilePicture = $user['photo'];
+    }
+
+    $loggedInClass = ''; // Class for logged-in users
+    $loggedOutClass = 'hide-view'; // Class for logged-out users
+} else {
+    $loggedInClass = 'hide-view'; // Class for logged-in users
+    $loggedOutClass = ''; // Class for logged-out users
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,8 +62,14 @@
                         <a class="nav-link" href="#">Favourites</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item  <?= $loggedOutClass ?>">
                         <a href="account.php"><i class="fas fa-user"></i></a>
+                    </li>
+
+                    <li class="nav-item <?= $loggedInClass ?>">
+                        <a href="account.php">
+                            <img class="profile-img" alt="avatar2" src="assets/images/users/<?= $profilePicture ?>" />
+                        </a>
                     </li>
 
 

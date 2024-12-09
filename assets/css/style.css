@@ -5,7 +5,7 @@
     color: white;
 }
 
-.text-black{
+.text-black {
     color: black;
 }
 
@@ -64,7 +64,8 @@ button {
     transition: 0.5s ease;
 }
 
-button:hover {
+#home button:hover,
+.borrow-btn:hover {
     background-color: red;
     color: white;
 }
@@ -81,13 +82,25 @@ button:hover {
 .navbar-nav .nav-link {
     padding: 0 20px;
     color: white;
+    white-space: nowrap;
     transition: 0.4s ease;
 }
 
 
 .nav-buttons {
     margin-left: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
@@ -104,10 +117,10 @@ button:hover {
 }
 
 .navbar i {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     padding: 0 0.7px;
     transition: 0.4s ease;
-    font-weight: 500;
+    font-weight: 700;
     cursor: pointer;
     margin-left: 20px;
     color: white;
@@ -121,12 +134,31 @@ button:hover {
     cursor: pointer;
 }
 
-
 footer .logo {
     width: 300px;
     height: 120px;
     margin: 0 0;
     padding: 0 0;
+}
+
+.profile-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border: 2px solid white;
+    margin-left: 20px;
+    transition: 0.4s ease;
+}
+
+.profile-img:hover {
+    border: 2px solid red;
+}
+
+.hide-view {
+    display: none;
 }
 
 @media only screen and (max-width:990px) {
@@ -197,7 +229,7 @@ footer .logo {
     margin-bottom: 2rem;
 }
 
-.book a{
+.book a {
     text-decoration: none;
 }
 
@@ -419,11 +451,11 @@ footer .social-tags a:hover {
     color: orange;
 }
 
-.book-info .modal-body p{
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  padding: 10px;
+.book-info .modal-body p {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
 }
 
 .star-rating i {
@@ -435,3 +467,23 @@ footer .social-tags a:hover {
 .star-rating i.active {
     color: goldenrod;
 }
+
+.carousel-inner {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 70vh;
+    cursor: pointer;
+}
+
+.carousel-item img {
+    opacity: 0.3;
+}
+
+.stack-Img {
+    width: 100vw;
+    height: 70vh;
+    object-fit: cover;
+}
+

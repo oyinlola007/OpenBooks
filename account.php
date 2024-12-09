@@ -1,6 +1,7 @@
 <?php
 
-session_start();
+$title = "My account";
+include_once 'layouts/header.php';
 
 if (!isset($_SESSION['logged_in'])){
   // redirect the user if they are not logged in
@@ -16,8 +17,6 @@ if (isset($_GET['logout'])){
   }
 }
 
-$title = "My account";
-include_once 'layouts/header.php';
 ?>
 
 <section class="my-5 py-5">

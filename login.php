@@ -1,14 +1,12 @@
 <?php
 
-session_start();
+$title = "Login";
+include_once 'layouts/header.php';
 
 if (isset($_SESSION['logged_in'])){
   // redirect the user if they are logged in
   header('location: account.php');
 }
-
-$title = "Login";
-include_once 'layouts/header.php';
 ?>
 
 <section class="my-5 py-5">
