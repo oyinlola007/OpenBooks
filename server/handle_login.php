@@ -19,6 +19,7 @@ if (isset($_POST['login_btn'])) {
     $_SESSION['message_type'] = "success";
     $_SESSION['user_email'] = $user['email'];
     $_SESSION['user_name'] = $user['username'];
+    $_SESSION['profile'] = $user['role'];
     $_SESSION['logged_in'] = true;
     header('location: ../account.php');
     exit();

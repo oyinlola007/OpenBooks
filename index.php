@@ -4,23 +4,26 @@ include_once 'layouts/header.php';
 
 
 $stmt = "SELECT COUNT(*) AS total_books FROM `book`";
-  
+
 $ps = $conn->prepare($stmt);
 $ps->execute();
 $ps = $ps->fetch();
 $total_books = $ps['total_books'];
 
 $stmt = "SELECT COUNT(*) AS total_users FROM `user`";
-  
+
 $ps = $conn->prepare($stmt);
 $ps->execute();
 $ps = $ps->fetch();
 $total_users = $ps['total_users'];
 ?>
 
+<section id="home" class="my-5 py-5">
+  <div class="container  mt-3 pt-5 text-white">
 
-<section id="home">
-  <div class="container">
+    <!-- if a message is sent, display it-->
+    <?php include_once 'layouts/alert.php'; ?>
+
     <h1>Welcome to <span>openBooks</span></h1>
     <h2>Online Free eBook Library</h1>
       <p class="intro col-lg-10 col-md-10 col-sm-12">Discover a world of knowledge and stories at your fingertips. OpenBooks Online Library offers a seamless way to explore, borrow, and enjoy books from a wide range of genres. Whether you're seeking thrilling adventures, insightful knowledge, or timeless classics, our library is here to connect you with the books you love, anytime, anywhere.</p>
@@ -28,10 +31,10 @@ $total_users = $ps['total_users'];
       <div class="stats">
         <div class="row">
           <div class="col col-lg-2 col-md-4 col-sm-6">
-            <i class="fas fa-book"></i><span><?= $total_books?></span>
+            <i class="fas fa-book"></i><span><?= $total_books ?></span>
           </div>
           <div class="col col-lg-2 col-md-4 col-sm-6">
-            <i class="fas fa-users"></i><span><?= $total_users?></span>
+            <i class="fas fa-users"></i><span><?= $total_users ?></span>
           </div>
         </div>
         <div class="row">
@@ -46,7 +49,7 @@ $total_users = $ps['total_users'];
 
       <div>
         <a href="discover.php">
-          <button>Discover &nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-right"></i></button>
+          <button class="discover">Discover &nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-right"></i></button>
         </a>
       </div>
 

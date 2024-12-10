@@ -37,7 +37,13 @@ if (isset($_GET['borrow'])) {
     $ps = $conn->prepare($stmt);
     $ps->execute([$user_email]);
     $user_id = $ps->fetchColumn();
-    
+
+    // Decrease count of available books
+    $stmt = "UPDATE `book` SET `available_copies` = `available_copies` - 1 WHERE `id` = ?";
+    $ps = $conn->prepare($stmt);
+    $params = [$book_id];
+    $ps->execute($params);
+
     // Insert into borrowed_book
     $stmt = "INSERT INTO borrowed_book 
         (user_id, book_id, borrow_date, status) 
@@ -58,21 +64,7 @@ if (isset($_GET['borrow'])) {
 }
 
 function isBookAvailable($conn, $bookId) {
-  $query = "
-      SELECT 
-          b.available_copies - IFNULL(
-              (
-                  SELECT COUNT(*) 
-                  FROM borrowed_book bb 
-                  WHERE bb.book_id = b.id AND bb.status = 'borrowed'
-              ), 
-              0
-          ) AS available_count
-      FROM 
-          book b
-      WHERE 
-          b.id = ?
-  ";
+  $query = "SELECT available_copies FROM book WHERE id = ?";
 
   $stmt = $conn->prepare($query);
   $stmt->execute([$bookId]);
@@ -80,7 +72,7 @@ function isBookAvailable($conn, $bookId) {
   $result = $stmt->fetch();
 
   // Check if the book is available
-  return $result && $result['available_count'] > 0;
+  return $result && $result['available_copies'] > 0;
 }
 
 function isBookBorrowedByUser($conn, $bookId, $email) {

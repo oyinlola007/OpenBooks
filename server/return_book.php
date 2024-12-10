@@ -34,6 +34,12 @@ if (isset($_POST['return_book'])) {
       $ps->execute($params);
     }
 
+    // Decrease count of available books
+    $stmt = "UPDATE `book` SET `available_copies` = `available_copies` + 1 WHERE `id` = ?";
+    $ps = $conn->prepare($stmt);
+    $params = [$book_id];
+    $ps->execute($params);
+
     // Update the borrowed_book table to mark the book as returned
     $stmt = "UPDATE borrowed_book 
         SET return_date = ?, status = ? 

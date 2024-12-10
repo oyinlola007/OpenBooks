@@ -1,22 +1,11 @@
-<footer class="mt-5 py-3 standard">
+<footer class="mt-5 py-3 admin">
     <div class="row container mx-auto pt-5 text-white">
-        <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-            <img class="logo" src="assets/images/openbooks.svg" alt="logo" />
+        <div class="footer-one col-lg-4 col-md-6 col-sm-12">
+            <img class="logo" src="../assets/images/openbooks.svg" alt="logo" />
             <p class="pt-3">You can borrow as many books as you want</p>
         </div>
 
-        <div class="footer-one col-lg-3 col-md-6 col-sm-12 categories">
-            <h5 class="pb-2">Categories</h5>
-            <ul class="text-uppercase">
-                <li><a href="discover.php?filter=Fantasy">Fantasy</a></li>
-                <li><a href="discover.php?filter=Science-Fiction">Science-Fiction</a></li>
-                <li><a href="discover.php?filter=Philosophy">Philosophy</a></li>
-                <li><a href="discover.php?filter=DIY">DIY</a></li>
-                <li><a href="discover.php?filter=Romance">Romance</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-one col-lg-3 col-md-6 col-sm-12 ">
+        <div class="footer-one col-lg-4 col-md-6 col-sm-12 ">
             <h5 class="pb-2">Contact Us</h5>
             <div>
                 <h6 class="text-uppercase">Address</h6>
@@ -32,7 +21,7 @@
             </div>
         </div>
 
-        <div class="footer-one col-lg-3 col-md-6 col-sm-12 social-tags">
+        <div class="footer-one col-lg-4 col-md-6 col-sm-12 social-tags">
             <h5 class="pb-2">Follow Us</h5>
             <div class="column">
                 <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
