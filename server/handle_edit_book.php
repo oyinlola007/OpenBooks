@@ -17,6 +17,7 @@ if (isset($_POST['edit-book'])) {
 
   if ($ps->execute($params)) {
 
+    // Check if a file was uploaded
     if (file_exists($_FILES['photo']['tmp_name']) && is_uploaded_file($_FILES['photo']['tmp_name'])) {
       // Get the name of the uploaded file
       $photo = htmlentities($_FILES['photo']['name']);
