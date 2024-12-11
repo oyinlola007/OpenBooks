@@ -1,6 +1,6 @@
 <?php
 
-$title = "My books";
+$title = "Borrowed Books";
 include_once 'layouts/header.php';
 
 if (!isset($_SESSION['logged_in'])) {

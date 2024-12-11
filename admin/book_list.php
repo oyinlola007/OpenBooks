@@ -1,6 +1,6 @@
 <?php
 
-$title = "My books";
+$title = "Book List";
 include_once 'layouts/header.php';
 
 if (!isset($_SESSION['logged_in'])) {
@@ -38,7 +38,9 @@ $ps->execute();
     </div>
 
 
-    <button class="add-book-btn" type="button">Add new book</button>
+    <a href="add_book.php">
+      <button class="add-book-btn" type="button">Add new book</button>
+    </a>
 
     <table class="table table-dark mt-5 pt-5 text-white table-striped">
       <thead>
@@ -72,14 +74,32 @@ $ps->execute();
               <?= $book['available_copies'] ?>
             </td>
             <td class="align-middle">
-              <ul>
-                <li>
-                  <a href="#">Delete</a>
-                </li>
-                <li>
-                  <a href="#">Edit</a>
-                </li>
-              </ul>
+
+              <a href="#" data-bs-toggle="modal" data-bs-target="#confirmationModalDelete<?= $book['book_id'] ?>">Delete</a>
+
+              <!-- Modal -->
+              <div class="modal fade" id="confirmationModalDelete<?= $book['book_id'] ?>" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body text-black">
+                      <p>Are you sure you want to delete '<?= $book['title'] ?>'?</p>
+                      <p>(This process is irreversible)</p>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                      <a href="../server/delete_book.php?delete=<?= $book['book_id']  ?>">
+                        <button type="button" class="btn btn-danger">Delete forever</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="edit_book.php?book_id=<?= $book['book_id'] ?>">Edit</a>
             </td>
           </tr>
         <?php } ?>

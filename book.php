@@ -34,8 +34,16 @@ if (isset($_GET['book_id'])) {
   $ps = $conn->prepare($stmt);
   $params = array($book_id);
   $ps->execute($params);
+
+  $book = $ps->fetch();
+  if ($book) {
+  } else {
+    header('location: index.php');
+    exit();
+  }
 } else {
   header('location: index.php');
+  exit();
 }
 
 ?>
@@ -45,55 +53,47 @@ if (isset($_GET['book_id'])) {
 
     <!-- if a message is sent, display it-->
     <?php include_once 'layouts/alert.php'; ?>
+    <div class="row mt-5 single-book">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <img class="img-fluid w-100 pb-1" src="assets/images/books/<?= $book['book_photo'] ?>" alt=<?= $book['title'] ?> />
+      </div>
 
-    <?php if ($book = $ps->fetch()) { ?>
-      <div class="row mt-5 single-book">
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <img class="img-fluid w-100 pb-1" src="assets/images/books/<?= $book['book_photo'] ?>" alt=<?= $book['title'] ?> />
-        </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 text-white">
+        <h6><?= $book['category_name'] ?></h6>
+        <h3 class="py-4"><?= $book['title'] ?></h3>
+        <button class="borrow-btn" type="button" data-bs-toggle="modal" data-bs-target="#confirmationModal">Borrow</button>
 
-        <div class="col-lg-4 col-md-6 col-sm-12 text-white">
-          <h6><?= $book['category_name'] ?></h6>
-          <h3 class="py-4"><?= $book['title'] ?></h3>
-          <button class="borrow-btn" type="button" data-bs-toggle="modal" data-bs-target="#confirmationModal">Borrow</button>
-
-          <!-- Modal -->
-          <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-black">
-                  <p>Are you sure you want to borrow '<?= $book['title'] ?>'?</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <a href="server/borrow_book.php?borrow=<?= $book['book_id'] ?>" id="borrow-book-btn"><button type="button" class="btn btn-primary">Yes, borrow</button></a>
-                </div>
+        <!-- Modal -->
+        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-black">
+                <p>Are you sure you want to borrow '<?= $book['title'] ?>'?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a href="server/borrow_book.php?borrow=<?= $book['book_id'] ?>" id="borrow-book-btn"><button type="button" class="btn btn-primary">Yes, borrow</button></a>
               </div>
             </div>
           </div>
-          <h4 class="my-5 mb-3">Description</h4>
-          <span">
-            <?= $book['description'] ?>
-            </span>
-
-            <div class="star my-5" data-rating=<?= $book['average_rating'] ?>>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
         </div>
+        <h4 class="my-5 mb-3">Description</h4>
+        <span">
+          <?= $book['description'] ?>
+          </span>
 
+          <div class="star my-5" data-rating=<?= $book['average_rating'] ?>>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
       </div>
-
-
-    <?php } else {
-      /**  TODO add book not found page */
-    } ?>
+    </div>
   </div>
 </section>
 

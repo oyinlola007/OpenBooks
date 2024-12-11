@@ -82,7 +82,7 @@ button {
     font-size: 20px;
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
-    box-shadow: 0 5px 10px rgb(42, 42, 42);
+    box-shadow: 0 1px 2px rgb(159, 157, 234);
 }
 
 .navbar.admin {
@@ -90,7 +90,7 @@ button {
     font-size: 20px;
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
-    box-shadow: 0 5px 10px rgb(42, 42, 42);
+    box-shadow: 0 1px 2px rgb(234, 157, 157);
 }
 
 .navbar-nav .nav-link {
@@ -116,6 +116,7 @@ button {
     align-items: center;
     width: 100%;
 }
+
 .navbar-nav {
     display: flex;
     justify-content: center;
@@ -353,14 +354,14 @@ footer .social-tags a:hover {
     flex-wrap: wrap;
 }
 
-.my-books a {
+table a {
     color: red;
     text-decoration: none;
     font-size: 16px;
     display: flex;
 }
 
-.my-books a:hover {
+table a:hover {
     color: orange;
 }
 
@@ -405,6 +406,24 @@ table th, table tr {
 #register-form input {
     width: 50%;
     margin: 5px auto;
+}
+
+#add-book-form {
+    width: 50%;
+    margin: 5px auto;
+    text-align: left;
+    padding: 20px;
+    border-top: 1px solid orangered;
+}
+
+#add-book-form input {
+    margin: 5px auto;
+}
+
+#add-book-form #add-book-btn {
+    width:50%;
+    background-color: orangered;
+    color: white;
 }
 
 #register-form #register-btn {

@@ -65,19 +65,19 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse nav-buttons" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-buttons">
                     <li class="nav-item">
                         <a class="nav-link" href="stats.php">Stats</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="user_list.php">UserList</a>
+                        <a class="nav-link" href="user_list.php">User List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="book_list.php">BookList</a>
+                        <a class="nav-link" href="book_list.php">Book List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="borrowed_books.php">BorrowedBooks</a>
+                        <a class="nav-link" href="borrowed_books.php">Borrowed Books</a>
                     </li>
 
                     <li class="nav-item  <?= $loggedOutClass ?>">

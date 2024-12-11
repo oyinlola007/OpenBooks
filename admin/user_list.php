@@ -1,6 +1,6 @@
 <?php
 
-$title = "My books";
+$title = "User List";
 include_once 'layouts/header.php';
 
 
@@ -63,13 +63,56 @@ $ps->execute();
               <?= $user['role'] ?>
             </td>
             <td class="align-middle">
-              <ul>
-                <li>
-                  <a href="#">Delete</a>
-                </li>
-                <li>
-                  <a href="#">Upgrade to Admin</a>
-                </li>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#confirmationModalDelete<?= $user['id'] ?>">Delete</a>
+
+              <!-- Modal -->
+              <div class="modal fade" id="confirmationModalDelete<?= $user['id'] ?>" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body text-black">
+                      <p>Are you sure you want to delete user '<?= $user['username'] ?>'?</p>
+                      <p>(This process is irreversible)</p>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                      <a href="../server/delete_user.php?delete=<?= $user['id'] ?>">
+                        <button type="button" class="btn btn-danger">Delete forever</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <?php if ($user['role'] != 'admin') { ?>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#confirmationModalUpgrade<?= $user['id'] ?>">Upgrade to Admin</a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="confirmationModalUpgrade<?= $user['id'] ?>" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+
+                      <div class="modal-body text-black">
+                        <p>Are you sure you want to upgrade '<?= $user['username'] ?>' to Admin?</p>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <a href="../server/upgrade_role.php?upgrade=<?= $user['id'] ?>">
+                          <button type="button" class="btn btn-primary">Upgrade user </button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              <?php } ?>
               </ul>
             </td>
           </tr>

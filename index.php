@@ -24,7 +24,7 @@ $total_users = $ps['total_users'];
     <!-- if a message is sent, display it-->
     <?php include_once 'layouts/alert.php'; ?>
 
-    <h1>Welcome to <span>openBooks</span></h1>
+    <h1 class="mt-4">Welcome to <span>openBooks</span></h1>
     <h2>Online Free eBook Library</h1>
       <p class="intro col-lg-10 col-md-10 col-sm-12">Discover a world of knowledge and stories at your fingertips. OpenBooks Online Library offers a seamless way to explore, borrow, and enjoy books from a wide range of genres. Whether you're seeking thrilling adventures, insightful knowledge, or timeless classics, our library is here to connect you with the books you love, anytime, anywhere.</p>
 
