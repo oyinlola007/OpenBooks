@@ -61,7 +61,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
     <nav class="navbar admin navbar-expand-lg bg-body-tertiary py-3 fixed-top">
         <div class="container admin">
-            <a href="../index.php"><img class="logo" src="../assets/images/openbooks.svg" alt="logo" /></a>
+            <a href="stats.php"><img class="logo" src="../assets/images/openbooks.svg" alt="logo" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

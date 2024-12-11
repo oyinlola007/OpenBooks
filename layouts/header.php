@@ -20,10 +20,17 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
     $loggedInClass = ''; // Class for logged-in users
     $loggedOutClass = 'hide-view'; // Class for logged-out users
+
+    // redirect to admin section if they are an admin
+    if (!isset($_SESSION['profile']) || $_SESSION['profile'] === 'admin') {
+        header('location: admin/stats.php');
+        exit();
+    }
 } else {
     $loggedInClass = 'hide-view'; // Class for logged-in users
     $loggedOutClass = ''; // Class for logged-out users
 }
+
 ?>
 
 
@@ -58,18 +65,6 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                     <li class="nav-item">
                         <a class="nav-link" href="my_books.php">My Books</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">Favourites</a>
-                    </li> -->
-
-                    <?php if (isset($_SESSION['profile']) && $_SESSION['profile'] === 'admin') { ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="admin/stats.php">Admin</a>
-                        </li>
-
-
-                    <?php  } ?>
-
                     <li class="nav-item  <?= $loggedOutClass ?>">
                         <a href="account.php"><i class="fas fa-user"></i></a>
                     </li>
