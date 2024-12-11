@@ -5,10 +5,10 @@ session_start();
 include_once 'connection.php';
 
 if (isset($_POST['add-book'])) {
-  $title = $_POST['book-title'];
-  $description = $_POST['description'];
-  $category = $_POST['category'];
-  $available_copies = $_POST['available-copies'];
+  $title = htmlentities($_POST['book-title']);
+  $description = htmlentities($_POST['description']);
+  $category = htmlentities($_POST['category']);
+  $available_copies = htmlentities($_POST['available-copies']);
 
     // check if book exist with same title
     $stmt = "SELECT COUNT(*) FROM book WHERE title = ? ";

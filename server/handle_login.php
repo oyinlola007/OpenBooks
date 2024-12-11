@@ -5,8 +5,8 @@ session_start();
 include_once 'connection.php';
 
 if (isset($_POST['login_btn'])) {
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+  $email = htmlentities($_POST['email']);
+  $password = htmlentities($_POST['password']);
   $password = md5($password); // hash the password
 
   $stmt = "SELECT * FROM user WHERE email = ? and password = ?";

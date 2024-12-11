@@ -5,8 +5,8 @@ session_start();
 include_once 'connection.php';
 
 if (isset($_POST['change_password'])) {
-  $password = $_POST['password'];
-  $confirm_password = $_POST['confirmPassword'];
+  $password = htmlentities($_POST['password']);
+  $confirm_password = htmlentities($_POST['confirmPassword']);
 
   if ($password !== $confirm_password) {
     $_SESSION['message'] = "Password don't match";

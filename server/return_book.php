@@ -13,7 +13,7 @@ if (isset($_POST['return_book'])) {
 
   } else {
     $user_email = $_SESSION['user_email'];
-    $comment = $_POST['comment'];
+    $comment = htmlentities($_POST['comment']);
     $rating = $_POST['rating'];
     $book_id = $_POST['book_id'];
 

@@ -5,10 +5,10 @@ session_start();
 include_once 'connection.php';
 
 if (isset($_POST['register'])) {
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $confirm_password = $_POST['confirmPassword'];
+  $name = htmlentities($_POST['name']);
+  $email = htmlentities($_POST['email']);
+  $password = htmlentities($_POST['password']);
+  $confirm_password = htmlentities($_POST['confirmPassword']);
   $role = 'standard'; // all users set to standard-user by default
 
   if ($password !== $confirm_password) {

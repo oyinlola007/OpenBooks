@@ -5,11 +5,11 @@ session_start();
 include_once 'connection.php';
 
 if (isset($_POST['edit-book'])) {
-  $title = $_POST['book-title'];
-  $book_id = $_POST['book-id'];
-  $description = $_POST['description'];
-  $category = $_POST['category'];
-  $available_copies = $_POST['available-copies'];
+  $book_id = htmlentities($_POST['book-id']);
+  $title = htmlentities($_POST['book-title']);
+  $description = htmlentities($_POST['description']);
+  $category = htmlentities($_POST['category']);
+  $available_copies = htmlentities($_POST['available-copies']);
 
   $req = "UPDATE book SET title = ?, description = ?, available_copies = ?, category_id = ? WHERE id = ?";
   $ps = $conn->prepare($req);
