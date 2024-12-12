@@ -62,7 +62,7 @@ $ps->execute();
               <?= $book['book_id'] ?>
             </td>
             <td class="align-middle">
-              <img class="book-img" src="../assets/images/books/<?= $book['photo'] ?>">
+              <img class="book-img" src="../assets/images/books/<?= $book['photo'] ?>"/>
             </td>
             <td class="align-middle">
               <?= $book['title'] ?>

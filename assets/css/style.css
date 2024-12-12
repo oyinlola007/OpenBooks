@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 .text-white {
     color: white;
 }
@@ -296,7 +295,7 @@ hr {
 .star[data-rating="3"] i:nth-child(-n+3),
 .star[data-rating="4"] i:nth-child(-n+4),
 .star[data-rating="5"] i:nth-child(-n+5) {
-  color: goldenrod; 
+    color: goldenrod;
 }
 
 footer.standard {
@@ -365,9 +364,10 @@ table a:hover {
     color: orange;
 }
 
-table th, table tr {
-    text-align: left; 
- }
+table th,
+table tr {
+    text-align: left;
+}
 
 #login-form {
     width: 50%;
@@ -421,7 +421,7 @@ table th, table tr {
 }
 
 #add-book-form #add-book-btn {
-    width:50%;
+    width: 50%;
     background-color: orangered;
     color: white;
 }
@@ -502,3 +502,22 @@ table th, table tr {
     object-fit: cover;
 }
 
+.card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-val {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.stat-card {
+    width: 18rem;
+}
+
+.stat-val p {
+    font-size: 2vw;
+    margin-right: 5px;
+}

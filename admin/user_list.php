@@ -51,7 +51,7 @@ $ps->execute();
               <?= $user['id'] ?>
             </td>
             <td class="align-middle">
-              <img class="profile-img" src="../assets/images/users/<?= $user['photo'] ?>">
+              <img class="profile-img" src="../assets/images/users/<?= $user['photo'] ?>"/>
             </td>
             <td class="align-middle">
               <?= $user['username'] ?>
@@ -113,7 +113,6 @@ $ps->execute();
                 </div>
 
               <?php } ?>
-              </ul>
             </td>
           </tr>
         <?php } ?>

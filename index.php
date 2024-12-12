@@ -84,7 +84,7 @@ $total_users = $ps['total_users'];
         <a href="book.php?book_id=<?= $book['id'] ?>">
           <div class="carousel-item <?php echo $activeClass; ?>">
             <div class="stackParent position-relative">
-              <img src="assets/images/books/<?= $book['photo'] ?>" class="stack-Img img-fluid" alt="<?= $book['title'] ?>">
+              <img src="assets/images/books/<?= $book['photo'] ?>" class="stack-Img img-fluid" alt="<?= $book['title'] ?>"/>
               <div class="stack-Txt position-absolute top-50 start-50 translate-middle text-white">
                 <h1 class="card-title pb-3"><?= $book['title'] ?></h1>
                 <h5 class="card-text"><?= $book['description'] ?></h5>
