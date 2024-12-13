@@ -47,7 +47,7 @@
     <div class="copyright mt-5">
         <div class="row container mx-auto text-white">
             <div class="col-lg-3 col-md-6 col-sm-12 mb-4 text-no-wrap mb-2">
-                <p>openBooks @ 2024 All Right Reserved</p>
+                <p>openBooks © 2024 All Right Reserved</p>
             </div>
         </div>
     </div>
