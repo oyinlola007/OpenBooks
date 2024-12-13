@@ -3,13 +3,14 @@
 A responsive and secure platform for managing an online library. Users can browse, borrow, and review books, while admins manage books, users, and view library statistics.
 
 ## Screenshots
-![Home Page](https://ibb.co/nRpS70M)  
-![Popular Books](https://ibb.co/W0X4TgP)  
-![Login Page](https://ibb.co/2S7k51B)  
-![Admin Dashboard](https://ibb.co/xmcfC9f)  
-![Book List Page](https://ibb.co/rfSC51g)
+![Home Page](https://i.ibb.co/Ptk8cYG/Screenshot-2024-12-13-at-01-15-44.png)  
+![Popular Books](https://i.ibb.co/YXSFrpy/Screenshot-2024-12-13-at-01-16-16.png)  
+![Login Page](https://i.ibb.co/ScX3J4p/Screenshot-2024-12-13-at-01-20-19.png)  
+![Admin Dashboard](https://i.ibb.co/cbpCgfC/Screenshot-2024-12-13-at-01-21-11.png)  
+![Book List Page](https://i.ibb.co/5xyNsfd/Screenshot-2024-12-13-at-01-21-50.png)
 
 ## Technology Stack
 - **Frontend**: HTML, CSS (Bootstrap framework)
 - **Backend**: PHP
 - **Database**: MySQL
+
