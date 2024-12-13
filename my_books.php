@@ -115,7 +115,7 @@ $ps->execute([$user_email]);
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 
                         <!-- Hidden form to send rating and comment to the server -->
-                        <form id="return-book-form<?= $book['book_id'] ?>" method="POST" action="server/return_book.php">
+                        <form id="return-book-form<?= $book['book_id'] ?>" method="POST" action="server/handle_return_book.php">
                           <input type="hidden" name="rating" id="rating<?= $book['book_id'] ?>" value="0">
                           <input type="hidden" name="comment" id="comment<?= $book['book_id'] ?>">
                           <input type="hidden" name="book_id" id="book_id<?= $book['book_id'] ?>">
