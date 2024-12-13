@@ -38,7 +38,7 @@ $ps->execute();
       <div class="form-group mb-3">
         <label class="mb-1">Choose book category</label>
         <select class="form-select" id="book-category" name="category" aria-label="book-category" required>
-
+          <option value>Select a category</option>
           <?php while ($category = $ps->fetch()) { ?>
             <option value=<?= $category["id"] ?>><?= $category["name"] ?></option>
           <?php } ?>

@@ -32,7 +32,7 @@ $stmt = "
       LEFT JOIN 
           `category` AS c ON b.category_id = c.id
     $whereClause ";
-  
+
 $ps = $conn->prepare($stmt);
 $ps->execute();
 $ps = $ps->fetch();
@@ -88,7 +88,7 @@ $ps->execute();
   <div class="row mx-auto container">
     <?php while ($book = $ps->fetch()) { ?>
       <div onclick="window.location.href='book.php?book_id=<?= $book['id'] ?>';" class="book text-center col-lg-4 col-md-12 col-sm-12">
-        <img class="img-fluid mb-3" src="assets/images/books/<?= $book['photo'] ?>" alt=<?= $book['title'] ?> />
+        <img class="img-fluid mb-3" src="assets/images/books/<?= $book['photo'] ?>" alt="<?= $book['title'] ?>" />
         <div class="star" data-rating=<?= $book['average_rating'] ?>>
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -96,12 +96,12 @@ $ps->execute();
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
         </div>
-        <button class="borrow-btn">Borrow Now</button>
+        <a href="book.php?book_id=<?= $book['id'] ?>" class="a-button borrow-btn">Borrow Now</a>
       </div>
 
     <?php } ?>
 
-    <nav area-label="Page navigation">
+    <nav>
       <ul class="pagination mt-5">
         <li class="page-item <?php if ($page_no <= 1) {
                                 echo 'disabled';

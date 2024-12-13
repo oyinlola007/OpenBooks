@@ -51,7 +51,7 @@ $ps->execute();
               <?= $user['id'] ?>
             </td>
             <td class="align-middle">
-              <img class="profile-img" src="../assets/images/users/<?= $user['photo'] ?>"/>
+              <img class="profile-img" src="../assets/images/users/<?= $user['photo'] ?>" alt="profile-img" />
             </td>
             <td class="align-middle">
               <?= $user['username'] ?>
@@ -66,7 +66,7 @@ $ps->execute();
               <a href="#" data-bs-toggle="modal" data-bs-target="#confirmationModalDelete<?= $user['id'] ?>">Delete</a>
 
               <!-- Modal -->
-              <div class="modal fade" id="confirmationModalDelete<?= $user['id'] ?>" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+              <div class="modal fade" id="confirmationModalDelete<?= $user['id'] ?>" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -80,8 +80,8 @@ $ps->execute();
 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                      <a href="../server/delete_user.php?delete=<?= $user['id'] ?>">
-                        <button type="button" class="btn btn-danger">Delete forever</button>
+                      <a href="../server/delete_user.php?delete=<?= $user['id'] ?>" class="btn btn-danger">
+                        Delete forever
                       </a>
                     </div>
                   </div>
@@ -91,7 +91,7 @@ $ps->execute();
                 <a href="#" data-bs-toggle="modal" data-bs-target="#confirmationModalUpgrade<?= $user['id'] ?>">Upgrade to Admin</a>
 
                 <!-- Modal -->
-                <div class="modal fade" id="confirmationModalUpgrade<?= $user['id'] ?>" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                <div class="modal fade" id="confirmationModalUpgrade<?= $user['id'] ?>" tabindex="-1" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -104,8 +104,8 @@ $ps->execute();
 
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="../server/upgrade_role.php?upgrade=<?= $user['id'] ?>">
-                          <button type="button" class="btn btn-primary">Upgrade user </button>
+                        <a href="../server/upgrade_role.php?upgrade=<?= $user['id'] ?>" class="btn btn-primary">
+                          Upgrade user
                         </a>
                       </div>
                     </div>

@@ -65,7 +65,7 @@ $ps->execute([$user_email]);
 
           <tr>
             <td>
-              <img class="book-img" src="assets/images/books/<?= $book['book_photo'] ?>" alt=<?= $book['title'] ?> />
+              <img class="book-img" src="assets/images/books/<?= $book['book_photo'] ?>" alt="<?= $book['title'] ?>" />
             </td>
             <td class="align-middle">
               <?= $book['title'] ?>
@@ -85,7 +85,7 @@ $ps->execute([$user_email]);
               <?php if ($book['status'] === 'borrowed') { ?>
                 <a class="return-btn" href="#" data-bs-toggle="modal" data-bs-target="#confirmationModal<?= $book['book_id'] ?>">Return book</a>
                 <!-- Modal -->
-                <div class="modal fade" id="confirmationModal<?= $book['book_id'] ?>" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                <div class="modal fade" id="confirmationModal<?= $book['book_id'] ?>" tabindex="-1" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -133,7 +133,7 @@ $ps->execute([$user_email]);
       </tbody>
 
     </table>
-
+  </div>
 </section>
 
 <script>

@@ -38,8 +38,8 @@ $ps->execute();
     </div>
 
 
-    <a href="add_book.php">
-      <button class="add-book-btn" type="button">Add new book</button>
+    <a href="add_book.php" class="add-book-btn a-button">
+      Add new book
     </a>
 
     <table class="table table-dark mt-5 pt-5 text-white table-striped">
@@ -62,7 +62,7 @@ $ps->execute();
               <?= $book['book_id'] ?>
             </td>
             <td class="align-middle">
-              <img class="book-img" src="../assets/images/books/<?= $book['photo'] ?>"/>
+              <img class="book-img" src="../assets/images/books/<?= $book['photo'] ?>" alt="book-img" />
             </td>
             <td class="align-middle">
               <?= $book['title'] ?>
@@ -78,7 +78,7 @@ $ps->execute();
               <a href="#" data-bs-toggle="modal" data-bs-target="#confirmationModalDelete<?= $book['book_id'] ?>">Delete</a>
 
               <!-- Modal -->
-              <div class="modal fade" id="confirmationModalDelete<?= $book['book_id'] ?>" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+              <div class="modal fade" id="confirmationModalDelete<?= $book['book_id'] ?>" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -92,8 +92,8 @@ $ps->execute();
 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                      <a href="../server/delete_book.php?delete=<?= $book['book_id']  ?>">
-                        <button type="button" class="btn btn-danger">Delete forever</button>
+                      <a href="../server/delete_book.php?delete=<?= $book['book_id']  ?>" class="btn btn-danger">
+                        Delete forever
                       </a>
                     </div>
                   </div>

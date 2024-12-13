@@ -60,7 +60,7 @@ $ps->execute();
 
           <tr>
             <td>
-              <img class="book-img" src="../assets/images/books/<?= $book['book_photo'] ?>" alt=<?= $book['title'] ?> />
+              <img class="book-img" src="../assets/images/books/<?= $book['book_photo'] ?>" alt="<?= $book['title'] ?>" />
             </td>
             <td class="align-middle">
               <?= $book['title'] ?>

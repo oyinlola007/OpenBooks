@@ -102,13 +102,12 @@ $most_borrowed_book = $ps->fetch();
       $stat_desc = "Average book rating"; ?>
       <?php include 'layouts/stat_card.php'; ?>
 
-      <?php $stat_val = "<p>" . $most_borrowed_book['title'] . "</p>";
+      <?php $stat_val = "<span>" . $most_borrowed_book['title'] . "</span>";
       $icon_name = "fa-fire";
       $stat_desc = "Most borrowed book"; ?>
       <?php include 'layouts/stat_card.php'; ?>
 
     </div>
-  </div>
   </div>
 </section>
 
