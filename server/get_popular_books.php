@@ -3,23 +3,29 @@
 include_once 'connection.php';
 
 $stmt = "SELECT 
-            b.id,
-            b.title,
-            b.description,
-            b.photo,
-            b.available_copies,
-            b.category_id,
-            COALESCE(CAST(AVG(r.rating) AS INT), 0) AS average_rating
+              b.id,
+              b.title,
+              b.description,
+              b.photo,
+              b.available_copies,
+              b.category_id,
+              COALESCE(rv.average_rating, 0) AS average_rating
           FROM 
-            `book` AS b
+              book b
           LEFT JOIN 
-            `review` AS r ON b.id = r.book_id
+              borrowed_book bb ON b.id = bb.book_id
           LEFT JOIN 
-            `borrowed_book` AS bb ON b.id = bb.book_id
+              (SELECT 
+                  r.book_id, 
+                  CAST(AVG(r.rating) AS INT) AS average_rating
+              FROM 
+                  review r
+              GROUP BY 
+                  r.book_id) rv ON b.id = rv.book_id
           GROUP BY 
-            b.id
+              b.id
           ORDER BY 
-            COUNT(bb.book_id) DESC
+              COUNT(bb.book_id) DESC
           LIMIT 3";
 
 $ps = $conn->prepare($stmt);
