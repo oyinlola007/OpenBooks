@@ -3,30 +3,35 @@
 include_once 'connection.php';
 
 // Retrieve filter and book_id from GET request
-$filter = isset($_GET['similar_filter']) ? $_GET['similar_filter'] : 'diy';
-$book_id = isset($_GET['filter_book_id']) ? intval($_GET['filter_book_id']) : 100;
+$filter = $_GET['similar_filter'];
+$book_id = $_GET['filter_book_id'];
 
-// Construct the SQL query
 $stmt = "SELECT 
-            b.id,
-            b.title,
-            b.description,
-            b.photo,
-            b.available_copies,
-            b.category_id,
-            COALESCE(CAST(AVG(r.rating) AS INT), 0) AS average_rating
+              b.id,
+              b.title,
+              b.description,
+              b.photo,
+              b.available_copies,
+              b.category_id,
+              COALESCE(rv.average_rating, 0) AS average_rating
           FROM 
-            `book` AS b
+              book b
+          INNER JOIN 
+              category c ON c.id = b.category_id
           LEFT JOIN 
-            `review` AS r ON b.id = r.book_id
-          LEFT JOIN 
-            `category` AS c ON b.category_id = c.id
+              (SELECT 
+                  r.book_id, 
+                  CAST(AVG(r.rating) AS INT) AS average_rating
+              FROM 
+                  review r
+              GROUP BY 
+                  r.book_id) rv ON b.id = rv.book_id
           WHERE 
-            c.name = '$filter' AND b.id != '$book_id'
+              c.name = '$filter' AND b.id != '$book_id'
           GROUP BY 
-            b.id
+              b.id
           ORDER BY 
-            RAND() 
+              RAND() 
           LIMIT 3";
 
 $ps = $conn->prepare($stmt);

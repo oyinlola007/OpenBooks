@@ -7,7 +7,7 @@ include_once 'layouts/header.php';
 if (isset($_GET['book_id'])) {
 
   $book_id = $_GET['book_id'];
-
+  
   $stmt = "SELECT * FROM book WHERE id = ?";
 
   $ps = $conn->prepare($stmt);

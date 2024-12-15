@@ -35,7 +35,7 @@ if (isset($_POST['return_book'])) {
     }
 
     // Decrease count of available books
-    $stmt = "UPDATE `book` SET `available_copies` = `available_copies` + 1 WHERE `id` = ?";
+    $stmt = "UPDATE book SET available_copies = available_copies + 1 WHERE id = ?";
     $ps = $conn->prepare($stmt);
     $params = [$book_id];
     $ps->execute($params);

@@ -13,24 +13,22 @@ if (!isset($_SESSION['logged_in'])) {
 
 $user_email = $_SESSION['user_email'];
 
-$stmt = "
-    SELECT 
-        b.id AS book_id,
-        b.title, 
-        b.photo AS book_photo, 
-        bb.status, 
-        c.name AS category_name,
-        DATEDIFF(CURRENT_DATE, bb.borrow_date) AS days_after_borrow,
-        bb.borrow_date
-    FROM borrowed_book bb
-    INNER JOIN book b ON bb.book_id = b.id
-    INNER JOIN user u ON bb.user_id = u.id
-    INNER JOIN category c ON b.category_id = c.id
-    WHERE u.email = ?
-    ORDER BY 
-        FIELD(bb.status, 'borrowed') DESC, 
-        bb.borrow_date ASC
-";
+$stmt = "SELECT 
+              b.id AS book_id,
+              b.title, 
+              b.photo AS book_photo, 
+              bb.status, 
+              c.name AS category_name,
+              DATEDIFF(CURRENT_DATE, bb.borrow_date) AS days_after_borrow,
+              bb.borrow_date
+          FROM borrowed_book bb
+          INNER JOIN book b ON bb.book_id = b.id
+          INNER JOIN user u ON bb.user_id = u.id
+          INNER JOIN category c ON b.category_id = c.id
+          WHERE u.email = ?
+          ORDER BY 
+              (bb.status = 'borrowed') DESC, 
+              bb.borrow_date ASC";
 
 $ps = $conn->prepare($stmt);
 $ps->execute([$user_email]);

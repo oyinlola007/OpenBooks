@@ -7,29 +7,28 @@ if (isset($_GET['book_id'])) {
 
   $book_id = $_GET['book_id'];
 
-  $stmt = "
-      SELECT 
-          book.id AS book_id, 
-          book.title, 
-          book.description, 
-          book.photo AS book_photo, 
-          category.id AS category_id, 
-          category.name AS category_name,
-          COALESCE(CAST(AVG(review.rating) AS INT), 0) AS average_rating
-      FROM 
-          book 
-      INNER JOIN 
-          category 
-      ON 
-          book.category_id = category.id 
-      LEFT JOIN 
-          review 
-      ON 
-          book.id = review.book_id
-      WHERE 
-          book.id = ?
-      GROUP BY
-          book.id, category.id";
+  $stmt = "SELECT 
+                book.id AS book_id, 
+                book.title, 
+                book.description, 
+                book.photo AS book_photo, 
+                category.id AS category_id, 
+                category.name AS category_name,
+                COALESCE(CAST(AVG(review.rating) AS INT), 0) AS average_rating
+            FROM 
+                book 
+            INNER JOIN 
+                category 
+            ON 
+                book.category_id = category.id 
+            LEFT JOIN 
+                review 
+            ON 
+                book.id = review.book_id
+            WHERE 
+                book.id = ?
+            GROUP BY
+                book.id, category.id";
 
   $ps = $conn->prepare($stmt);
   $params = array($book_id);

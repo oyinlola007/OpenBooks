@@ -12,10 +12,8 @@ if (!isset($_SESSION['profile']) || $_SESSION['profile'] === 'standard') {
   exit();
 }
 
-
 if (isset($_GET['delete'])) {
   $book_id = $_GET['delete'];
-  
 
   if (!isset($_SESSION['logged_in'])){
     // redirect the user if they are not logged in
@@ -34,7 +32,7 @@ if (isset($_GET['delete'])) {
     unlink("../assets/images/books/" . $book_photo);
 
     // Delete user
-    $stmt = "DELETE FROM `book` WHERE `id` = ?";
+    $stmt = "DELETE FROM book WHERE id = ?";
     $ps = $conn->prepare($stmt);
     $params = [$book_id];
 

@@ -12,17 +12,21 @@ if (!isset($_SESSION['logged_in'])) {
 }
 
 $stmt = "SELECT 
-            book.id AS book_id, 
-            book.title, 
-            book.description, 
-            book.available_copies,
-            book.photo, 
-            category.name AS category_name
-          FROM book INNER JOIN category ON book.category_id = category.id";
+              book.id AS book_id, 
+              book.title, 
+              book.description, 
+              book.available_copies,
+              book.photo, 
+              category.name AS category_name
+          FROM 
+              book 
+          INNER JOIN 
+              category 
+          ON 
+              book.category_id = category.id";
 
 $ps = $conn->prepare($stmt);
 $ps->execute();
-
 
 ?>
 

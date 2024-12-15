@@ -3,7 +3,6 @@
 $title = "Add book";
 include_once 'layouts/header.php';
 
-
 $stmt = "SELECT id, name FROM category";
 
 $ps = $conn->prepare($stmt);

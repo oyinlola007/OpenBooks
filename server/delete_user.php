@@ -42,7 +42,7 @@ if (isset($_GET['delete'])) {
     unlink("../assets/images/users/" . $user_photo);
 
     // Delete user
-    $stmt = "DELETE FROM `user` WHERE `id` = ?";
+    $stmt = "DELETE FROM user WHERE id = ?";
     $ps = $conn->prepare($stmt);
     $params = [$user_id];
 

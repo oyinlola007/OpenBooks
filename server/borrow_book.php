@@ -39,7 +39,7 @@ if (isset($_GET['borrow'])) {
     $user_id = $ps->fetchColumn();
 
     // Decrease count of available books
-    $stmt = "UPDATE `book` SET `available_copies` = `available_copies` - 1 WHERE `id` = ?";
+    $stmt = "UPDATE book SET available_copies = available_copies - 1 WHERE id = ?";
     $ps = $conn->prepare($stmt);
     $params = [$book_id];
     $ps->execute($params);
@@ -76,21 +76,19 @@ function isBookAvailable($conn, $bookId) {
 }
 
 function isBookBorrowedByUser($conn, $bookId, $email) {
-  $query = "
-      SELECT 
-          bb.id AS borrowed_id,
-          bb.borrow_date,
-          bb.return_date,
-          bb.status
-      FROM 
-          borrowed_book bb
-      INNER JOIN 
-          user u ON bb.user_id = u.id
-      WHERE 
-          bb.book_id = ? AND 
-          u.email = ? AND 
-          bb.status = 'borrowed'
-  ";
+  $query = "SELECT 
+                bb.id AS borrowed_id,
+                bb.borrow_date,
+                bb.return_date,
+                bb.status
+            FROM 
+                borrowed_book bb
+            INNER JOIN 
+                user u ON bb.user_id = u.id
+            WHERE 
+                bb.book_id = ? AND 
+                u.email = ? AND 
+                bb.status = 'borrowed'";
 
   $stmt = $conn->prepare($query);
   $stmt->execute([$bookId, $email]);

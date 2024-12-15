@@ -26,7 +26,7 @@ if (isset($_GET['upgrade'])) {
   } else{
 
     // Change role of user
-    $stmt = "UPDATE `user` SET `role` = 'admin' WHERE `id` = ?";
+    $stmt = "UPDATE user SET role = admin WHERE id = ?";
     $ps = $conn->prepare($stmt);
     $params = [$user_id];
 

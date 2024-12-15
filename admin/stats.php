@@ -11,55 +11,54 @@ if (!isset($_SESSION['logged_in'])) {
   exit();
 }
 
-$stmt = "SELECT SUM(available_copies) AS available_copies FROM `book`";
+$stmt = "SELECT SUM(available_copies) AS available_copies FROM book";
 $ps = $conn->prepare($stmt);
 $ps->execute();
 $ps = $ps->fetch();
 $available_copies = $ps['available_copies'];
 
-$stmt = "SELECT COUNT(*) AS total_users FROM `user`";
+$stmt = "SELECT COUNT(*) AS total_users FROM user";
 $ps = $conn->prepare($stmt);
 $ps->execute();
 $ps = $ps->fetch();
 $total_users = $ps['total_users'];
 
-$stmt = "SELECT COUNT(*) AS total_borrowed FROM `borrowed_book` WHERE `status` = 'borrowed'";
+$stmt = "SELECT COUNT(*) AS total_borrowed FROM borrowed_book WHERE status = 'borrowed'";
 $ps = $conn->prepare($stmt);
 $ps->execute();
 $ps = $ps->fetch();
 $total_borrowed = $ps['total_borrowed'];
 
-$stmt = "SELECT COUNT(*) AS total_returned FROM `borrowed_book` WHERE `status` = 'returned'";
+$stmt = "SELECT COUNT(*) AS total_returned FROM borrowed_book WHERE status = 'returned'";
 $ps = $conn->prepare($stmt);
 $ps->execute();
 $ps = $ps->fetch();
 $total_returned = $ps['total_returned'];
 
-$stmt = "SELECT AVG(rating) AS avg_rating FROM `review`";
+$stmt = "SELECT AVG(rating) AS avg_rating FROM review";
 $ps = $conn->prepare($stmt);
 $ps->execute();
 $ps = $ps->fetch();
 $avg_rating = round($ps['avg_rating'], 2);
 
 $stmt = "SELECT 
-    b.id AS book_id, 
-    b.title AS title, 
-    b.photo AS photo, 
-    COUNT(bb.book_id) AS borrow_count
-FROM 
-    `borrowed_book` bb
-INNER JOIN 
-    `book` b ON bb.book_id = b.id
-GROUP BY 
-    b.id, b.title, b.photo
-ORDER BY 
-    borrow_count DESC
-LIMIT 1";
+              b.id AS book_id, 
+              b.title AS title, 
+              b.photo AS photo, 
+              COUNT(bb.book_id) AS borrow_count
+          FROM 
+              borrowed_book bb
+          INNER JOIN 
+              book b ON bb.book_id = b.id
+          GROUP BY 
+              b.id, b.title, b.photo
+          ORDER BY 
+              borrow_count DESC
+          LIMIT 1";
+
 $ps = $conn->prepare($stmt);
 $ps->execute();
 $most_borrowed_book = $ps->fetch();
-
-
 
 ?>
 

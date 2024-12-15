@@ -25,13 +25,15 @@ if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
 }
 
 // Get total number of books available
-$stmt = "
-    SELECT COUNT(*) AS total_books
-      FROM 
-          `book` AS b
-      LEFT JOIN 
-          `category` AS c ON b.category_id = c.id
-    $whereClause ";
+$stmt = "SELECT 
+              COUNT(*) AS total_books
+          FROM 
+              book AS b
+          LEFT JOIN 
+              category AS c 
+          ON 
+              b.category_id = c.id
+          $whereClause";
 
 $ps = $conn->prepare($stmt);
 $ps->execute();
@@ -52,28 +54,31 @@ $total_no_of_pages = ceil($total_books / $total_books_per_page);
 
 
 // Get all books from DB and filter by catefory if provided
-$stmt = "
-    SELECT 
-        b.id, 
-        b.title, 
-        b.description, 
-        b.photo, 
-        b.available_copies, 
-        b.category_id,
-        COALESCE(CAST(AVG(r.rating) AS INT), 0) AS average_rating
-    FROM 
-        `book` AS b
-    LEFT JOIN 
-        `review` AS r ON b.id = r.book_id
-    LEFT JOIN 
-        `category` AS c ON b.category_id = c.id
-    $whereClause
-    GROUP BY 
-        b.id
-    LIMIT $offset, $total_books_per_page;
-";
-
-
+$stmt = "SELECT 
+              b.id,
+              b.title,
+              b.description,
+              b.photo,
+              b.available_copies,
+              b.category_id,
+              COALESCE(rv.average_rating, 0) AS average_rating
+          FROM 
+              book b
+          INNER JOIN 
+              category c ON b.category_id = c.id
+          LEFT JOIN 
+              (SELECT 
+                  r.book_id, 
+                  CAST(AVG(r.rating) AS INT) AS average_rating
+              FROM 
+                  review r
+              GROUP BY 
+                  r.book_id) rv ON b.id = rv.book_id
+          $whereClause
+          GROUP BY 
+              b.id
+          LIMIT $offset, $total_books_per_page";
+          
 $ps = $conn->prepare($stmt);
 
 $ps->execute();
@@ -132,7 +137,6 @@ $ps->execute();
         </li>
       </ul>
     </nav>
-
 
   </div>
 </section>

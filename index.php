@@ -3,14 +3,14 @@ $title = "Home";
 include_once 'layouts/header.php';
 
 
-$stmt = "SELECT COUNT(*) AS total_books FROM `book`";
+$stmt = "SELECT COUNT(*) AS total_books FROM book";
 
 $ps = $conn->prepare($stmt);
 $ps->execute();
 $ps = $ps->fetch();
 $total_books = $ps['total_books'];
 
-$stmt = "SELECT COUNT(*) AS total_users FROM `user`";
+$stmt = "SELECT COUNT(*) AS total_users FROM user";
 
 $ps = $conn->prepare($stmt);
 $ps->execute();
