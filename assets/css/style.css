@@ -8,13 +8,6 @@
     color: black;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-}
-
 body.standard {
     font-family: 'Raleway', sans-serif;
     background-color: #173143;
@@ -99,7 +92,6 @@ button, .a-button {
     white-space: nowrap;
     transition: 0.4s ease;
 }
-
 
 .standard .nav-buttons {
     margin-left: 45%;
@@ -194,25 +186,6 @@ footer .logo {
     display: none;
 }
 
-@media only screen and (max-width:990px) {
-
-    .nav-buttons {
-        margin: 10px;
-    }
-
-    .nav-buttons ul {
-        margin: 1 rem;
-        justify-content: flex-start;
-        align-items: flex-start;
-        text-align: left;
-    }
-
-    .nav-buttons ul .fas {
-        margin: 20px 5px 10px 20px;
-    }
-
-}
-
 #home h1 span {
     color: orange;
     font-size: 3rem;
@@ -289,7 +262,6 @@ hr {
     font-size: 0.9rem;
     color: grey;
 }
-
 
 .star[data-rating="1"] i:nth-child(1),
 .star[data-rating="2"] i:nth-child(-n+2),
