@@ -271,6 +271,23 @@ hr {
     color: goldenrod;
 }
 
+.book-star {
+    padding-bottom: 5px;
+}
+
+.book-star i {
+    font-size: 0.9rem;
+    color: grey;
+}
+
+.book-star[data-rating="1"] i:nth-child(1),
+.book-star[data-rating="2"] i:nth-child(-n+2),
+.book-star[data-rating="3"] i:nth-child(-n+3),
+.book-star[data-rating="4"] i:nth-child(-n+4),
+.book-star[data-rating="5"] i:nth-child(-n+5) {
+    color: goldenrod;
+}
+
 footer.standard {
     background-color: #112030;
 }
@@ -493,4 +510,9 @@ table tr {
 .stat-val span {
     font-size: 2vw;
     margin-right: 5px;
+}
+
+.review {
+    background: none;
+    width: 50vw;
 }

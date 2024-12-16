@@ -4,7 +4,6 @@ $title = "Book";
 include_once 'layouts/header.php';
 
 if (isset($_GET['book_id'])) {
-
   $book_id = $_GET['book_id'];
 
   $stmt = "SELECT 
@@ -35,7 +34,23 @@ if (isset($_GET['book_id'])) {
   $ps->execute($params);
 
   $book = $ps->fetch();
+
   if ($book) {
+    $stmt = "SELECT 
+                  *
+              FROM 
+                  review r
+              INNER JOIN
+                  user u
+              ON
+                  r.user_id = u.id
+              WHERE 
+                  r.book_id = ?";
+
+    $ps = $conn->prepare($stmt);
+    $params = array($book_id);
+    $ps->execute($params);
+    $reviews_present = false;
   } else {
     header('location: index.php');
     exit();
@@ -95,6 +110,40 @@ if (isset($_GET['book_id'])) {
     </div>
   </div>
 </section>
+
+<section id="reviews" class="my-5 pb-5">
+  <div class="container text-center mt-5 py-3 text-white">
+    <h3>Reviews</h3>
+    <hr class="mx-auto">
+  </div>
+  <div class="col mx-auto container-fluid">
+    <?php
+    while ($reviews = $ps->fetch()) {
+      $reviews_present = true;
+    ?>
+      <div class="card mb-5 review text-white text-center mx-auto container-fluid border-light ">
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-white"><?= $reviews['username'] ?></h6>
+          <div class="book-star" data-rating=<?= $reviews['rating'] ?>>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="card-text"><?= $reviews['comment'] ?></p>
+        </div>
+      </div>
+    <?php }
+
+    if (!$reviews_present) {
+      echo "<h4 class='text-white text-center'>No reviews yet</h4>";
+    }
+    ?>
+
+  </div>
+</section>
+
 
 <section id="similar-books" class="my-5 pb-5">
   <div class="container text-center mt-5 py-5 text-white">
