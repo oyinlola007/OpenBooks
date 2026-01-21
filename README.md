@@ -1,6 +1,6 @@
 # OpenBooks Online Library
 
-A responsive and secure platform for managing an online library. Users can browse, borrow, and review books, while admins manage books, users, and view library statistics.
+A responsive and secure platform for managing an online library. Users can browse, borrow, and review books, while admins manage books, users, and view the library stats.
 
 ## Screenshots
 ![Home Page](https://i.ibb.co/Ptk8cYG/Screenshot-2024-12-13-at-01-15-44.png)  
